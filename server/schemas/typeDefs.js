@@ -23,8 +23,8 @@ const typeDefs = gql`
     }
     
     type Auth {
-        token:
-        user:
+        token: ID!
+        user: User
     }
 
     type Mutation {
