@@ -17,7 +17,7 @@ const resolvers = {
 
     Mutation: {
         login: async (parent, { email, password}) => {
-            const user = await User.findONe({ email });
+            const user = await User.findOne({ email });
 
             if (!user) {
                 throw new AuthenticationError('Incorrect credentials');
@@ -38,7 +38,10 @@ const resolvers = {
 
             return { token, user };
         },
-        
+        // saveBook: async (parent, )
+
+        // removeBook:
+
     }
 };
 
