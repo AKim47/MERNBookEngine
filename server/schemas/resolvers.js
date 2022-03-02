@@ -10,7 +10,7 @@ const resolvers = {
                     .select('-_v -password');
                 return userData;
             }
-            
+
             throw new AuthenticationError('Not logged in');
         }
     },
@@ -34,6 +34,7 @@ const resolvers = {
         },
         addUser: async (parent, args) => {
             const user = await User.create(args);
+            console.log(user);
             const token = signToken(user);
 
             return { token, user };
@@ -54,7 +55,7 @@ const resolvers = {
             if (context.user) {
                 const destroyBook = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: {savedBooks: { bookId: bookdId}}},
+                    { $pull: {savedBooks: { bookId: bookId}}},
                     { new: true }
                 );
                 return destroyBook;
